@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>王昶生日大屏信息</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 图片尺寸控制 */
+        .card .image-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 宽高比 */
+            overflow: hidden;
+        }
+
+        .card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .card .content {
+            padding: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .card .content {
+                padding: 10px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+                margin-bottom: 3px;
+            }
+
+            .card p {
+                font-size: 12px;
+            }
+
+            /* 确保手机上的图片比例也保持一致 */
+            .card .image-container {
+                padding-bottom: 75%; /* 保持4:3比例 */
+            }
+        }
+    </style>
+    <script>
+        // 为所有省份图片添加点击事件
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const provinceName = card.querySelector('h3').textContent;
+                const provinceId = provinceName.replace(/[省市自治区]/g, '');
+
+                // 图片点击事件
+                const img = card.querySelector('img');
+                img.addEventListener('click', function() {
+                    // 跳转到详情页，并传递省份参数
+                    window.location.href = 'detail.html?province=' + encodeURIComponent(provinceId);
+                });
+
+                // 整个卡片也可以点击
+                card.addEventListener('click', function() {
+                    window.location.href = 'detail.html?province=' + encodeURIComponent(provinceId);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <h1>王昶生日应援大屏信息</h1>
+    <p>欢迎昶丝打卡返图(=^･ω･^=)♡</p>
+</div>
+
+<div class="gallery">
+    <!-- 华北地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/beijing.jpg" alt="北京故宫" />
+        </div>
+        <div class="content">
+            <h3>北京市</h3>
+            <p>北京共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/tianjin.png" alt="天津滨海新区" />
+        </div>
+        <div class="content">
+            <h3>天津市</h3>
+            <p>天津共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/hebei.png" alt="河北承德避暑山庄" />
+        </div>
+        <div class="content">
+            <h3>河北省</h3>
+            <p>河北共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/shanxi.png" alt="山西平遥古城" />
+        </div>
+        <div class="content">
+            <h3>山西省</h3>
+            <p>山西共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/neimenggu.png" alt="内蒙古草原" />
+        </div>
+        <div class="content">
+            <h3>内蒙古自治区</h3>
+            <p>内蒙古共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <!-- 东北地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/liaoning.png" alt="辽宁大连星海广场" />
+        </div>
+        <div class="content">
+            <h3>辽宁省</h3>
+            <p>辽宁共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/jilin.jpg" alt="吉林长白山" />
+        </div>
+        <div class="content">
+            <h3>吉林省</h3>
+            <p>吉林共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/heilongjiang.png" alt="黑龙江哈尔滨冰雪大世界" />
+        </div>
+        <div class="content">
+            <h3>黑龙江省</h3>
+            <p>黑龙江共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <!-- 华东地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/shanghai.jpg" alt="上海外滩" />
+        </div>
+        <div class="content">
+            <h3>上海市</h3>
+            <p>上海共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/jiangsu.jpg" alt="江苏苏州园林" />
+        </div>
+        <div class="content">
+            <h3>江苏省</h3>
+            <p>江苏共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/hangzhou.jpg" alt="浙江西湖" />
+        </div>
+        <div class="content">
+            <h3>浙江省</h3>
+            <p>浙江共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/huangshan.jpg" alt="安徽黄山" />
+        </div>
+        <div class="content">
+            <h3>安徽省</h3>
+            <p>安徽共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/fujian.jpg" alt="福建土楼" />
+        </div>
+        <div class="content">
+            <h3>福建省</h3>
+            <p>福建共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/jiangxi.jpg" alt="江西庐山" />
+        </div>
+        <div class="content">
+            <h3>江西省</h3>
+            <p>江西共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/shandong.jpg" alt="山东泰山" />
+        </div>
+        <div class="content">
+            <h3>山东省</h3>
+            <p>山东共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <!-- 中南地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/henan.png" alt="河南少林寺" />
+        </div>
+        <div class="content">
+            <h3>河南省</h3>
+            <p>河南共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/hubei.png" alt="湖北武汉长江大桥" />
+        </div>
+        <div class="content">
+            <h3>湖北省</h3>
+            <p>湖北共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/hunan.jpg" alt="湖南张家界" />
+        </div>
+        <div class="content">
+            <h3>湖南省</h3>
+            <p>湖南共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/guangdong.png" alt="广东广州塔" />
+        </div>
+        <div class="content">
+            <h3>广东省</h3>
+            <p>广东共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/guangxi.jpg" alt="广西桂林山水" />
+        </div>
+        <div class="content">
+            <h3>广西壮族自治区</h3>
+            <p>广西共解锁了xx块大屏，请点击查看详情"</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/hainan.jpg" alt="海南三亚海滩" />
+        </div>
+        <div class="content">
+            <h3>海南省</h3>
+            <p>海南共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <!-- 西南地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/chongqing.jpg" alt="重庆洪崖洞" />
+        </div>
+        <div class="content">
+            <h3>重庆市</h3>
+            <p>重庆共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/sichuan.jpg" alt="四川九寨沟" />
+        </div>
+        <div class="content">
+            <h3>四川省</h3>
+            <p>四川共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/guizhou.jpg" alt="贵州黄果树瀑布" />
+        </div>
+        <div class="content">
+            <h3>贵州省</h3>
+            <p>贵州共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/yunnan.png" alt="云南丽江古城" />
+        </div>
+        <div class="content">
+            <h3>云南省</h3>
+            <p>云南共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/xizang.jpg" alt="西藏布达拉宫" />
+        </div>
+        <div class="content">
+            <h3>西藏自治区</h3>
+            <p>西藏共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <!-- 西北地区 -->
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/shanxi1.jpg" alt="陕西兵马俑" />
+        </div>
+        <div class="content">
+            <h3>陕西省</h3>
+            <p>陕西共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/ganshu.png" alt="甘肃敦煌莫高窟" />
+        </div>
+        <div class="content">
+            <h3>甘肃省</h3>
+            <p>甘肃共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/qinghai.jpg" alt="青海湖" />
+        </div>
+        <div class="content">
+            <h3>青海省</h3>
+            <p>青海共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/ningxia.jpg" alt="宁夏沙湖" />
+        </div>
+        <div class="content">
+            <h3>宁夏回族自治区</h3>
+            <p>宁夏共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-container">
+            <img src="provincephoto/xinjiang.jpg" alt="新疆天山" />
+        </div>
+        <div class="content">
+            <h3>新疆维吾尔自治区</h3>
+            <p>新疆共解锁了xx块大屏，请点击查看详情</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
